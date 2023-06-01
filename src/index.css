@@ -14,8 +14,13 @@ code {
 }
 
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: x-small;
+  position: relative;
 }
 
 .app-logo {
@@ -32,7 +37,6 @@ code {
 .app-header {
   background-color: #11142D;
   display: flex;
-  /* min-height: 100vh; */
   margin-top: 30px;
   flex-direction: column;
   align-items: center;
@@ -47,16 +51,17 @@ code {
 
 button {
   border-radius: 6px;
-  padding: 5px;
+  padding: 10px;
   margin-top: 20px;
-  background-color: white;
   transition-duration: 0.4s;
+  border: 2px solid transparent;
 }
 
 button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: #34d5db; /* Green */
   color: black;
+  border-color: #11142D;
+  cursor: pointer;
 }
 
 .sk-chase {
@@ -118,13 +123,12 @@ button:hover {
 .error {
   display: flex;
   flex-direction: column;
-  background-color: red;
-  padding: 5px;
+  padding: 8px;
   border-radius: 8px;
   font-weight: bold;
-  gap: 10px;
-  border: rgb(35, 174, 255) solid 4px;
-  margin-top: 25px;
+  gap: 5px;
+  border: rgb(35, 174, 255) solid 2px;
+  margin-top: 25px;  
 }
 
 h1 {
@@ -152,7 +156,12 @@ input {
   margin-top: 50px;
   padding: 10px;
   border-radius: 5px;
-  border: #61dafb 3px solid;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+input:hover {
+  border-color: #34d5db;
 }
 
 .tempP {
@@ -171,11 +180,15 @@ input {
   color: white;
   align-items: center;
   font-size: small;
-  border: #4bbbbe solid 1px;
   flex-direction: column;
-  border-radius: 10px;
-  background-image: url('../img/rainy.webp');
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url('../img/rainy.webp');
   font-weight: bold;
+  padding: 15px;  
 }
 
 .searchPhoto {
@@ -187,10 +200,25 @@ input {
   padding: 3px;
 }
 
-.errorTitle {
-  border: 5px solid;
-  color: white;
-  font-weight: bold;
-  border-radius: 10px;
-  background-color: #11142D;
+.toast {
+  position: absolute;
+  background-color: #eee;
+  border-radius: 8px;
+  color: black;
+  font-size: 1rem;
+  top: -5px;
+  padding: 10px;
+  font-weight: 600;
+  box-shadow: 0px 2px 4px 2px #b6b6b6;
+  display: none;
+  transition: all 0.3s;
+}
+
+.active {
+  display: block;
+}
+
+.toast span:first-child {
+  color: red;
+  margin: 0 5px;
 }
